@@ -1,18 +1,16 @@
 package me.ulrich.raids.api;
 
-/** Root public contract implemented by the UltimateRaids plugin. */
-public interface UltimateRaidsAPI {
+import me.ulrich.raids.interfaces.URaids;
 
-    /** Semantic version of this public API contract. */
+/** Root public contract implemented by the UltimateRaids plugin. */
+public interface UltimateRaidsAPI extends URaids {
+
+    /** Semantic version of the public API surface. */
     String API_VERSION = "1.0.0";
 
-    /** Running UltimateRaids plugin version. */
+    /** Returns the running UltimateRaids plugin version. */
     String getPluginVersion();
 
-    /** Public raid operations and read-only runtime views. */
-    RaidAPI getRaidAPI();
-
-    default String getApiVersion() {
-        return API_VERSION;
-    }
+    /** Returns the public API contract version. */
+    default String getApiVersion() { return API_VERSION; }
 }

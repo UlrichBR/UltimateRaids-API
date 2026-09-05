@@ -6,7 +6,7 @@
 
     <groupId>io.github.ulrichbr</groupId>
     <artifactId>UltimateRaids-API</artifactId>
-    <version>0.10.0-BETA-1.0-RELEASE</version>
+    <version>0.10.0-BETA-2.0-RELEASE</version>
 
     <name>UltimateRaids-API</name>
     <description>Official public integration API for UltimateRaids.</description>
@@ -108,7 +108,7 @@
 						<configuration>
 							<transformers>
 								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>me.ulrich.clans.Clans</mainClass>
+									<mainClass>me.ulrich.raids.UltimateRaids</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>
@@ -211,30 +211,6 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>net.kyori</groupId>
-			<artifactId>adventure-api</artifactId>
-			<version>4.11.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>net.kyori</groupId>
-			<artifactId>adventure-text-minimessage</artifactId>
-			<version>4.11.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>net.kyori</groupId>
-			<artifactId>adventure-platform-bukkit</artifactId>
-			<version>4.1.2</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>net.kyori</groupId>
-			<artifactId>adventure-text-serializer-plain</artifactId>
-			<version>4.11.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>com.github.Anon8281</groupId>
 			<artifactId>UniversalScheduler</artifactId>
 			<version>0.1.6</version>
@@ -255,7 +231,7 @@
 		<dependency>
 			<groupId>com.github.UlrichBR</groupId>
 			<artifactId>EntityWizard</artifactId>
-			<version>1.0.0</version>
+			<version>1.7.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
