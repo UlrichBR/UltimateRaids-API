@@ -1,5 +1,11 @@
 package me.ulrich.raids.data;
 
+/**
+ * Legacy enum container retained only for migration compatibility.
+ *
+ * @deprecated use the dedicated enums in {@code me.ulrich.raids.api.type}.
+ */
+@Deprecated(forRemoval = true)
 public final class RaidEnums {
     private RaidEnums() {}
     public enum RaidState { CREATED, WAITING, STARTING, RUNNING, COMPLETING, COMPLETED, FAILED, CANCELLING, CANCELLED }
