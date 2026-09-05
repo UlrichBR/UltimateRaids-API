@@ -12,18 +12,10 @@ import me.ulrich.raids.api.RegistryAPI;
 import me.ulrich.raids.api.UltimateRaidsAPI;
 import org.bukkit.plugin.java.JavaPlugin;
 
-/**
- * Compile-time public facade for the UltimateRaids plugin main class.
- *
- * <p>The real implementations live in the UltimateRaids plugin. This API artifact
- * only exposes methods that external plugins, addons and extensions may call.</p>
- */
 public class UltimateRaids extends JavaPlugin implements UltimateRaidsAPI {
 
-    /** Returns the active UltimateRaids instance when running on the server. */
     public static UltimateRaids getInstance() { return null; }
 
-    /** Alias used by addons/extensions to access the public core facade. */
     public static UltimateRaids getRaidCore() { return null; }
 
     @Override public JavaPlugin getPlugin() { return this; }
