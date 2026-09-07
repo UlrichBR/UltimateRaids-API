@@ -10,6 +10,7 @@ import me.ulrich.raids.interfaces.EconomyImplement;
 import me.ulrich.raids.interfaces.EntityImplement;
 import me.ulrich.raids.interfaces.GroupImplement;
 import me.ulrich.raids.interfaces.ItemParseImplement;
+import me.ulrich.raids.interfaces.PlayerVisualImplement;
 import me.ulrich.raids.interfaces.RaidActionImplement;
 import me.ulrich.raids.interfaces.RaidObjectiveImplement;
 import me.ulrich.raids.interfaces.RaidRequirementImplement;
@@ -25,6 +26,7 @@ final class ComponentRegistrationTracker {
     private final Map<String, BorderImplement> borders = new LinkedHashMap<>();
     private final Map<String, EconomyImplement> economies = new LinkedHashMap<>();
     private final Map<String, SchematicImplement> schematics = new LinkedHashMap<>();
+    private final Map<String, PlayerVisualImplement> visuals = new LinkedHashMap<>();
 
     private final Map<String, RaidActionImplement> actions = new LinkedHashMap<>();
     private final Map<String, RaidRewardImplement> rewards = new LinkedHashMap<>();
@@ -53,6 +55,10 @@ final class ComponentRegistrationTracker {
 
     synchronized void track(SchematicImplement implementation) {
         if (implementation != null) schematics.put(requireId(implementation.getId()), implementation);
+    }
+
+    synchronized void track(PlayerVisualImplement implementation) {
+        if (implementation != null) visuals.put(requireId(implementation.getId()), implementation);
     }
 
     synchronized void track(RaidActionImplement implementation) {
@@ -97,6 +103,9 @@ final class ComponentRegistrationTracker {
             schematics.forEach((id, implementation) -> {
                 if (integrations.getSchematic(id).orElse(null) == implementation) integrations.unregisterSchematic(id);
             });
+            visuals.forEach((id, implementation) -> {
+                if (integrations.getVisual(id).orElse(null) == implementation) integrations.unregisterVisual(id);
+            });
         }
 
         RegistryAPI registry = plugin.getRegistryAPI();
@@ -125,6 +134,7 @@ final class ComponentRegistrationTracker {
         borders.clear();
         economies.clear();
         schematics.clear();
+        visuals.clear();
         actions.clear();
         rewards.clear();
         objectives.clear();

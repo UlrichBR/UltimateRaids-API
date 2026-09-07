@@ -6,7 +6,7 @@ import me.ulrich.raids.interfaces.URaids;
 public interface UltimateRaidsAPI extends URaids {
 
     /** Semantic version of the public API surface. */
-    String API_VERSION = "1.0.0";
+    String API_VERSION = "1.1.0";
 
     /** Returns the running UltimateRaids plugin version. */
     String getPluginVersion();

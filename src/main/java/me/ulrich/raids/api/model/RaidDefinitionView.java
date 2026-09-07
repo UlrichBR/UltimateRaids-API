@@ -37,6 +37,16 @@ public interface RaidDefinitionView {
     LoadoutMode getLoadoutMode();
     Optional<String> getKitId();
 
+    /** Delay before participants are removed after a successful raid. */
+    default int getCompleteExitDelaySeconds() {
+        return 0;
+    }
+
+    /** Delay before participants are removed after a failed raid. */
+    default int getFailExitDelaySeconds() {
+        return 0;
+    }
+
     List<RaidStageDefinitionView> getStages();
 
     default int getStageCount() {

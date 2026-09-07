@@ -2,12 +2,14 @@ package me.ulrich.raids.data;
 
 import java.io.File;
 import java.util.Optional;
+import java.util.Set;
 import me.ulrich.raids.UltimateRaids;
 import me.ulrich.raids.interfaces.BorderImplement;
 import me.ulrich.raids.interfaces.EconomyImplement;
 import me.ulrich.raids.interfaces.EntityImplement;
 import me.ulrich.raids.interfaces.GroupImplement;
 import me.ulrich.raids.interfaces.ItemParseImplement;
+import me.ulrich.raids.interfaces.PlayerVisualImplement;
 import me.ulrich.raids.interfaces.RaidActionImplement;
 import me.ulrich.raids.interfaces.RaidObjectiveImplement;
 import me.ulrich.raids.interfaces.RaidRequirementImplement;
@@ -97,6 +99,23 @@ public abstract class RaidAddon {
         Optional<SchematicImplement> previous = requireCore().getIntegrationAPI().registerSchematic(implementation);
         registrations.track(implementation);
         return previous;
+    }
+
+    /** Registers a player visual provider owned by this addon. */
+    public final Optional<PlayerVisualImplement> registerVisual(PlayerVisualImplement implementation) {
+        Optional<PlayerVisualImplement> previous = requireCore().getIntegrationAPI().registerVisual(implementation);
+        registrations.track(implementation);
+        return previous;
+    }
+
+    /** Resolves a player visual provider by id or AUTO. */
+    public final Optional<PlayerVisualImplement> getVisual(String id) {
+        return requireCore().getIntegrationAPI().getVisual(id);
+    }
+
+    /** Returns registered player visual provider ids. */
+    public final Set<String> getVisualIds() {
+        return requireCore().getIntegrationAPI().getVisualIds();
     }
 
     /** Registers a custom action owned by this addon. */

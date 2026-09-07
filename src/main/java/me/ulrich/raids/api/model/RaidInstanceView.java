@@ -22,6 +22,11 @@ public interface RaidInstanceView {
     Optional<Instant> getCompletedAt();
 
     Set<UUID> getParticipants();
+
+    /** Returns the resolved participation group for one player, when applicable. */
+    default Optional<RaidGroupView> getParticipantGroup(UUID playerId) {
+        return Optional.empty();
+    }
     int getStageIndex();
     Optional<RaidStageView> getCurrentStage();
     Map<UUID, RaidContributionView> getContributions();
