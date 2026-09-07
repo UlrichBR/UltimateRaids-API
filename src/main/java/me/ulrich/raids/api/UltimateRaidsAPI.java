@@ -1,16 +1,36 @@
 package me.ulrich.raids.api;
 
-import me.ulrich.raids.interfaces.URaids;
+import org.bukkit.plugin.java.JavaPlugin;
 
-/** Root public contract implemented by the UltimateRaids plugin. */
-public interface UltimateRaidsAPI extends URaids {
+/**
+ * Root public contract implemented by the running UltimateRaids plugin.
+ *
+ * <p>This interface intentionally exposes only stable API contracts. Internal
+ * managers and mutable raid runtime objects are not part of this surface.</p>
+ */
+public interface UltimateRaidsAPI {
 
     /** Semantic version of the public API surface. */
-    String API_VERSION = "1.1.0";
+    String API_VERSION = "1.2.0";
 
-    /** Returns the running UltimateRaids plugin version. */
+    JavaPlugin getPlugin();
+
+    RaidAPI getRaidAPI();
+    IntegrationAPI getIntegrationAPI();
+    RegistryAPI getRegistryAPI();
+    AddonAPI getAddonAPI();
+    ExtensionAPI getExtensionAPI();
+    CommandAPI getCommandAPI();
+    GuiAPI getGuiAPI();
+    HooksAPI getHooksAPI();
+    LibAPI getLibAPI();
+
     String getPluginVersion();
+    String getLanguage();
+    String getTimeZone();
+    String getTag();
 
-    /** Returns the public API contract version. */
-    default String getApiVersion() { return API_VERSION; }
+    default String getApiVersion() {
+        return API_VERSION;
+    }
 }

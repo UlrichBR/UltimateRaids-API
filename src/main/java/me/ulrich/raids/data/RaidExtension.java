@@ -29,6 +29,7 @@ public abstract class RaidExtension {
 
     /** Internal lifecycle hook used by the UltimateRaids loader. */
     public final void init(UltimateRaids plugin, ExtensionInfo info, File dataFolder) {
+        if (this.plugin != null) throw new IllegalStateException("Extension already initialized");
         this.plugin = plugin;
         this.info = info;
         this.dataFolder = dataFolder;
@@ -41,7 +42,10 @@ public abstract class RaidExtension {
     public final ExtensionInfo getInfo() { return info; }
 
     /** Returns the private data directory assigned to this extension. */
-    public final File getDataFolder() { return dataFolder; }
+    public final File getDataFolder() {
+        if (dataFolder != null) dataFolder.mkdirs();
+        return dataFolder;
+    }
 
     /** Returns the current lifecycle state. */
     public final ComponentState getState() { return state; }

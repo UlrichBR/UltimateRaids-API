@@ -6,7 +6,7 @@
 
     <groupId>io.github.ulrichbr</groupId>
     <artifactId>UltimateRaids-API</artifactId>
-    <version>0.10.0-BETA-4.1-RELEASE</version>
+    <version>0.10.0-BETA-4.2-RELEASE</version>
 
     <name>UltimateRaids-API</name>
     <description>Official public integration API for UltimateRaids.</description>
@@ -94,26 +94,6 @@
 					<encoding>${project.build.sourceEncoding}</encoding>
 					<failOnError>true</failOnError>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>3.6.2</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-						<configuration>
-							<transformers>
-								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>me.ulrich.raids.UltimateRaids</mainClass>
-								</transformer>
-							</transformers>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

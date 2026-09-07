@@ -12,10 +12,15 @@ import me.ulrich.raids.api.RegistryAPI;
 import me.ulrich.raids.api.UltimateRaidsAPI;
 import org.bukkit.plugin.java.JavaPlugin;
 
+/**
+ * Compile-time facade matching the runtime UltimateRaids plugin class.
+ *
+ * <p>External code should normally prefer {@link me.ulrich.raids.api.UltimateRaidsProvider}.
+ * The static accessors are retained for addon/extension source compatibility.</p>
+ */
 public class UltimateRaids extends JavaPlugin implements UltimateRaidsAPI {
 
     public static UltimateRaids getInstance() { return null; }
-
     public static UltimateRaids getRaidCore() { return null; }
 
     @Override public JavaPlugin getPlugin() { return this; }

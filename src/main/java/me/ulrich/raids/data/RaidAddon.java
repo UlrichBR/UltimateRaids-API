@@ -30,6 +30,7 @@ public abstract class RaidAddon {
 
     /** Internal lifecycle hook used by the UltimateRaids loader. */
     public final void init(UltimateRaids plugin, AddonInfo info, File dataFolder) {
+        if (this.plugin != null) throw new IllegalStateException("Addon already initialized");
         this.plugin = plugin;
         this.info = info;
         this.dataFolder = dataFolder;
@@ -42,7 +43,10 @@ public abstract class RaidAddon {
     public final AddonInfo getInfo() { return info; }
 
     /** Returns the private data directory assigned to this addon. */
-    public final File getDataFolder() { return dataFolder; }
+    public final File getDataFolder() {
+        if (dataFolder != null) dataFolder.mkdirs();
+        return dataFolder;
+    }
 
     /** Returns the current lifecycle state. */
     public final ComponentState getState() { return state; }
