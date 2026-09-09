@@ -10,6 +10,10 @@ import me.ulrich.raids.interfaces.EconomyImplement;
 import me.ulrich.raids.interfaces.EntityImplement;
 import me.ulrich.raids.interfaces.GroupImplement;
 import me.ulrich.raids.interfaces.ItemParseImplement;
+import me.ulrich.raids.interfaces.HologramImplement;
+import me.ulrich.raids.interfaces.MapImplement;
+import me.ulrich.raids.interfaces.RegionImplement;
+import me.ulrich.raids.interfaces.ScoreboardImplement;
 import me.ulrich.raids.interfaces.PlayerVisualImplement;
 import me.ulrich.raids.interfaces.RaidActionImplement;
 import me.ulrich.raids.interfaces.RaidObjectiveImplement;
@@ -27,6 +31,10 @@ final class ComponentRegistrationTracker {
     private final Map<String, EconomyImplement> economies = new LinkedHashMap<>();
     private final Map<String, SchematicImplement> schematics = new LinkedHashMap<>();
     private final Map<String, PlayerVisualImplement> visuals = new LinkedHashMap<>();
+    private final Map<String, RegionImplement> regions = new LinkedHashMap<>();
+    private final Map<String, ScoreboardImplement> scoreboards = new LinkedHashMap<>();
+    private final Map<String, MapImplement> maps = new LinkedHashMap<>();
+    private final Map<String, HologramImplement> holograms = new LinkedHashMap<>();
 
     private final Map<String, RaidActionImplement> actions = new LinkedHashMap<>();
     private final Map<String, RaidRewardImplement> rewards = new LinkedHashMap<>();
@@ -59,6 +67,22 @@ final class ComponentRegistrationTracker {
 
     synchronized void track(PlayerVisualImplement implementation) {
         if (implementation != null) visuals.put(requireId(implementation.getId()), implementation);
+    }
+
+    synchronized void track(RegionImplement implementation) {
+        if (implementation != null) regions.put(requireId(implementation.getId()), implementation);
+    }
+
+    synchronized void track(ScoreboardImplement implementation) {
+        if (implementation != null) scoreboards.put(requireId(implementation.getId()), implementation);
+    }
+
+    synchronized void track(MapImplement implementation) {
+        if (implementation != null) maps.put(requireId(implementation.getId()), implementation);
+    }
+
+    synchronized void track(HologramImplement implementation) {
+        if (implementation != null) holograms.put(requireId(implementation.getId()), implementation);
     }
 
     synchronized void track(RaidActionImplement implementation) {
@@ -106,6 +130,18 @@ final class ComponentRegistrationTracker {
             visuals.forEach((id, implementation) -> {
                 if (integrations.getVisual(id).orElse(null) == implementation) integrations.unregisterVisual(id);
             });
+            regions.forEach((id, implementation) -> {
+                if (integrations.getRegion(id).orElse(null) == implementation) integrations.unregisterRegion(id);
+            });
+            scoreboards.forEach((id, implementation) -> {
+                if (integrations.getScoreboard(id).orElse(null) == implementation) integrations.unregisterScoreboard(id);
+            });
+            maps.forEach((id, implementation) -> {
+                if (integrations.getMap(id).orElse(null) == implementation) integrations.unregisterMap(id);
+            });
+            holograms.forEach((id, implementation) -> {
+                if (integrations.getHologram(id).orElse(null) == implementation) integrations.unregisterHologram(id);
+            });
         }
 
         RegistryAPI registry = plugin.getRegistryAPI();
@@ -135,6 +171,10 @@ final class ComponentRegistrationTracker {
         economies.clear();
         schematics.clear();
         visuals.clear();
+        regions.clear();
+        scoreboards.clear();
+        maps.clear();
+        holograms.clear();
         actions.clear();
         rewards.clear();
         objectives.clear();

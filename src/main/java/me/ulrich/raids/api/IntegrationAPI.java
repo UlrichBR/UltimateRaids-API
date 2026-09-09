@@ -7,6 +7,10 @@ import me.ulrich.raids.interfaces.EconomyImplement;
 import me.ulrich.raids.interfaces.EntityImplement;
 import me.ulrich.raids.interfaces.GroupImplement;
 import me.ulrich.raids.interfaces.ItemParseImplement;
+import me.ulrich.raids.interfaces.HologramImplement;
+import me.ulrich.raids.interfaces.MapImplement;
+import me.ulrich.raids.interfaces.RegionImplement;
+import me.ulrich.raids.interfaces.ScoreboardImplement;
 import me.ulrich.raids.interfaces.PlayerVisualImplement;
 import me.ulrich.raids.interfaces.SchematicImplement;
 
@@ -19,6 +23,10 @@ public interface IntegrationAPI {
     Optional<EconomyImplement> registerEconomy(EconomyImplement implementation);
     Optional<SchematicImplement> registerSchematic(SchematicImplement implementation);
     Optional<PlayerVisualImplement> registerVisual(PlayerVisualImplement implementation);
+    Optional<RegionImplement> registerRegion(RegionImplement implementation);
+    Optional<ScoreboardImplement> registerScoreboard(ScoreboardImplement implementation);
+    Optional<MapImplement> registerMap(MapImplement implementation);
+    Optional<HologramImplement> registerHologram(HologramImplement implementation);
 
     void unregisterItem(String id);
     void unregisterEntity(String id);
@@ -27,6 +35,10 @@ public interface IntegrationAPI {
     void unregisterEconomy(String id);
     void unregisterSchematic(String id);
     void unregisterVisual(String id);
+    void unregisterRegion(String id);
+    void unregisterScoreboard(String id);
+    void unregisterMap(String id);
+    void unregisterHologram(String id);
     void unregisterAll(String id);
 
     Optional<ItemParseImplement> getItem(String id);
@@ -36,6 +48,10 @@ public interface IntegrationAPI {
     Optional<EconomyImplement> getEconomy(String id);
     Optional<SchematicImplement> getSchematic(String id);
     Optional<PlayerVisualImplement> getVisual(String id);
+    Optional<RegionImplement> getRegion(String id);
+    Optional<ScoreboardImplement> getScoreboard(String id);
+    Optional<MapImplement> getMap(String id);
+    Optional<HologramImplement> getHologram(String id);
 
     Set<String> getItemIds();
     Set<String> getEntityIds();
@@ -44,4 +60,8 @@ public interface IntegrationAPI {
     Set<String> getEconomyIds();
     Set<String> getSchematicIds();
     Set<String> getVisualIds();
+    Set<String> getRegionIds();
+    Set<String> getScoreboardIds();
+    Set<String> getMapIds();
+    Set<String> getHologramIds();
 }

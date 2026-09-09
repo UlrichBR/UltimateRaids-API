@@ -9,6 +9,10 @@ import me.ulrich.raids.interfaces.EconomyImplement;
 import me.ulrich.raids.interfaces.EntityImplement;
 import me.ulrich.raids.interfaces.GroupImplement;
 import me.ulrich.raids.interfaces.ItemParseImplement;
+import me.ulrich.raids.interfaces.HologramImplement;
+import me.ulrich.raids.interfaces.MapImplement;
+import me.ulrich.raids.interfaces.RegionImplement;
+import me.ulrich.raids.interfaces.ScoreboardImplement;
 import me.ulrich.raids.interfaces.PlayerVisualImplement;
 import me.ulrich.raids.interfaces.RaidActionImplement;
 import me.ulrich.raids.interfaces.RaidObjectiveImplement;
@@ -112,6 +116,34 @@ public abstract class RaidAddon {
         return previous;
     }
 
+    /** Registers a region provider owned by this component. */
+    public final Optional<RegionImplement> registerRegion(RegionImplement implementation) {
+        Optional<RegionImplement> previous = requireCore().getIntegrationAPI().registerRegion(implementation);
+        registrations.track(implementation);
+        return previous;
+    }
+
+    /** Registers a scoreboard bridge owned by this component. */
+    public final Optional<ScoreboardImplement> registerScoreboard(ScoreboardImplement implementation) {
+        Optional<ScoreboardImplement> previous = requireCore().getIntegrationAPI().registerScoreboard(implementation);
+        registrations.track(implementation);
+        return previous;
+    }
+
+    /** Registers a map provider owned by this component. */
+    public final Optional<MapImplement> registerMap(MapImplement implementation) {
+        Optional<MapImplement> previous = requireCore().getIntegrationAPI().registerMap(implementation);
+        registrations.track(implementation);
+        return previous;
+    }
+
+    /** Registers a hologram provider owned by this component. */
+    public final Optional<HologramImplement> registerHologram(HologramImplement implementation) {
+        Optional<HologramImplement> previous = requireCore().getIntegrationAPI().registerHologram(implementation);
+        registrations.track(implementation);
+        return previous;
+    }
+
     /** Resolves a player visual provider by id or AUTO. */
     public final Optional<PlayerVisualImplement> getVisual(String id) {
         return requireCore().getIntegrationAPI().getVisual(id);
@@ -121,6 +153,16 @@ public abstract class RaidAddon {
     public final Set<String> getVisualIds() {
         return requireCore().getIntegrationAPI().getVisualIds();
     }
+
+    public final Optional<RegionImplement> getRegion(String id) { return requireCore().getIntegrationAPI().getRegion(id); }
+    public final Optional<ScoreboardImplement> getScoreboard(String id) { return requireCore().getIntegrationAPI().getScoreboard(id); }
+    public final Optional<MapImplement> getMap(String id) { return requireCore().getIntegrationAPI().getMap(id); }
+    public final Optional<HologramImplement> getHologram(String id) { return requireCore().getIntegrationAPI().getHologram(id); }
+
+    public final Set<String> getRegionIds() { return requireCore().getIntegrationAPI().getRegionIds(); }
+    public final Set<String> getScoreboardIds() { return requireCore().getIntegrationAPI().getScoreboardIds(); }
+    public final Set<String> getMapIds() { return requireCore().getIntegrationAPI().getMapIds(); }
+    public final Set<String> getHologramIds() { return requireCore().getIntegrationAPI().getHologramIds(); }
 
     /** Registers a custom action owned by this addon. */
     public final void registerAction(RaidActionImplement implementation) {

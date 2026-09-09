@@ -6,7 +6,7 @@
 
     <groupId>io.github.ulrichbr</groupId>
     <artifactId>UltimateRaids-API</artifactId>
-    <version>0.10.0-BETA-4.2-RELEASE</version>
+    <version>0.12.0-BETA-1.0-RELEASE</version>
 
     <name>UltimateRaids-API</name>
     <description>Official public integration API for UltimateRaids.</description>
