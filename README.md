@@ -1,6 +1,6 @@
-# UltimateRaids-API
+# RaidWeaver API
 
-Public Java API for **UltimateRaids**.
+Public Java API for **RaidWeaver**.
 
 This repository contains the supported public contracts used by plugins, addons and extensions that integrate with UltimateRaids.
 
@@ -9,6 +9,8 @@ The API intentionally exposes only the public integration surface. Internal runt
 ---
 
 ## Maven
+
+The Maven coordinate intentionally keeps the historical artifact id for compatibility.
 
 ```xml
 <dependency>
@@ -19,12 +21,12 @@ The API intentionally exposes only the public integration surface. Internal runt
 </dependency>
 ```
 
-UltimateRaids provides the implementation at runtime, so the API should normally remain `provided`.
+RaidWeaver provides the implementation at runtime, so the API should normally remain `provided`.
 
 For a normal Bukkit/Paper plugin:
 
 ```yaml
-depend: [UltimateRaids]
+depend: [RaidWeaver]
 ```
 
 For addons and extensions, use the corresponding `addon.yml` or `extension.yml` metadata.
@@ -34,21 +36,21 @@ For addons and extensions, use the corresponding `addon.yml` or `extension.yml` 
 ## Root Access
 
 ```java
-UltimateRaidsAPI api = UltimateRaidsProvider.get();
+RaidWeaverAPI api = RaidWeaverProvider.get();
 
 RaidAPI raids = api.getRaidAPI();
 IntegrationAPI integrations = api.getIntegrationAPI();
 RegistryAPI registry = api.getRegistryAPI();
 ```
 
-From an UltimateRaids addon/extension, the same public services are also available through the Raid Core exposed to the addon runtime.
+From an RaidWeaver addon/extension, the same public services are also available through the Raid Core exposed to the addon runtime.
 
 ---
 
 ## Reading Raid Data
 
 ```java
-RaidAPI raids = UltimateRaidsProvider.get().getRaidAPI();
+RaidAPI raids = RaidWeaverProvider.get().getRaidAPI();
 
 raids.getRaid("forgottencrypt").ifPresent(raid -> {
     getLogger().info("Raid ID: " + raid.getId());
@@ -63,7 +65,7 @@ The public API exposes read-only Raid/runtime views rather than mutable internal
 ## Queue a Player
 
 ```java
-RaidAPI raids = UltimateRaidsProvider.get().getRaidAPI();
+RaidAPI raids = RaidWeaverProvider.get().getRaidAPI();
 
 RaidQueueResult result = raids.queueRaidFromTrigger(player, "forgottencrypt");
 
@@ -96,7 +98,7 @@ UltimateRaids exposes Bukkit lifecycle events so integrations can react to Raid 
 
 ## Addons
 
-UltimateRaids addons extend the Raid ecosystem while running directly on the UltimateRaids addon runtime.
+RaidWeaver addons extend the Raid ecosystem while running directly on the RaidWeaver addon runtime.
 
 Example:
 
@@ -187,7 +189,7 @@ The public SDK includes contracts such as:
 - `RaidObjectiveImplement`
 - `RaidRequirementImplement`
 
-Implementations remain inside external addons/extensions. UltimateRaids owns the registries and invokes those public contracts.
+Implementations remain inside external addons/extensions. RaidWeaver owns the registries and invokes those public contracts.
 
 ---
 
@@ -223,7 +225,7 @@ This separation allows the Core to evolve without forcing external integrations 
 
 ---
 
-## Official UltimateRaids Examples
+## Official RaidWeaver Examples
 
 Ready-to-use Raid configurations are maintained separately from the API:
 
@@ -255,20 +257,20 @@ Examples are intentionally kept outside this API repository so the Java SDK rema
 
 ## Related Projects
 
-**UltimateRaids Examples**  
+**RaidWeaver Examples**  
 https://github.com/UlrichBR/UltimateRaids-Examples
 
-**UltimateRaids Documentation**  
+**RaidWeaver Documentation**  
 https://wiki.tribecraft.com.br/en/ultimateraids/1/
 
-**UltimateRaids Builder**  
+**RaidWeaver Builder**  
 https://tribecraft.com.br/raids-builder/
 
 ---
 
 ## Compatibility
 
-The API version used by your project should match the public API version expected by the UltimateRaids Core you target.
+The API version used by your project should match the public API version expected by the RaidWeaver Core you target.
 
 Do not compile against internal Core classes when a public API contract exists.
 

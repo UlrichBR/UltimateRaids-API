@@ -8,8 +8,8 @@
     <artifactId>UltimateRaids-API</artifactId>
     <version>0.12.0-BETA-2.0-RELEASE</version>
 
-    <name>UltimateRaids-API</name>
-    <description>Official public integration API for UltimateRaids.</description>
+    <name>RaidWeaver-API</name>
+    <description>Official public integration API for RaidWeaver.</description>
     <url>https://github.com/UlrichBR/UltimateRaids-API</url>
 
     <licenses>

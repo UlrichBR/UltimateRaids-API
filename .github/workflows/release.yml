@@ -7,18 +7,18 @@ on:
       - '*'
 
 env:
-  MODULE_ID: "ultimateraids" # ID da extensão para as pastas
-  PROJECT_FOLDER: "api/ultimateraids" # Pasta base no R2
+  MODULE_ID: "ultimateraids" # Legacy R2 id intentionally retained for compatibility
+  PROJECT_FOLDER: "api/ultimateraids" # Legacy R2 path intentionally retained for compatibility
   MIN_JAVA_VERSION: "21"
   # --- NOVAS CONFIGURAÇÕES DINÂMICAS PARA O MANIFESTO ---
   API_DESCRIPTION: "API de Integração Oficial"
-  API_DEPENDENCIES: '["UltimateRaids"]' # Mantenha a sintaxe de array JSON em string simples
+  API_DEPENDENCIES: '["RaidWeaver"]' # Mantenha a sintaxe de array JSON em string simples
   DISCORD_EMBED_TRIBE: "https://api.tribecraft.com.br/src/logo.png"
   DISCORD_EMBED_THUMBNAIL: "https://api.tribecraft.com.br/src/raids_thumbnail.png"
   # Configuração base limpa para evitar quebras de variáveis globais
-  UPDATE_TITLE: "🔌 Ultimate Raids API"
+  UPDATE_TITLE: "🔌 RaidWeaver API"
   UPDATE_MESSAGE: |
-    [B]Eco:[/B] Ultimate Raids
+    [B]Eco:[/B] RaidWeaver
     [B]Status:[/B] Stable and submitted to the API Repository.
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
