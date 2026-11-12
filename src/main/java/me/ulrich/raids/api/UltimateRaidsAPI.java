@@ -3,11 +3,12 @@ package me.ulrich.raids.api;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
- * Root public contract implemented by the running UltimateRaids plugin.
+ * Legacy root contract retained for binary compatibility after the RaidWeaver rebrand.
  *
  * <p>This interface intentionally exposes only stable API contracts. Internal
  * managers and mutable raid runtime objects are not part of this surface.</p>
  */
+@Deprecated(forRemoval = false)
 public interface UltimateRaidsAPI {
 
     /** Semantic version of the public API surface. */
